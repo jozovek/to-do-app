@@ -26,6 +26,7 @@ A Vue.js-based todo application with database integration and AI-powered feature
    Server will run on http://localhost:3000
 
 2. **Start the frontend**:
+
    ```
    npm run dev
    ```
