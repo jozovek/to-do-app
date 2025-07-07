@@ -1,9 +1,7 @@
 import axios from 'axios';
 
 // Environment-aware API URL
-const API_URL = import.meta.env.PROD 
-  ? import.meta.env.VITE_API_URL || '/api'  // Production: use environment variable or fallback to relative path
-  : '/api';  // Development: use Vite proxy
+const API_URL = import.meta.env.VITE_API_URL || '/api'  // Production: use environment variable or fallback to relative path
 
 // Create axios instance
 const api = axios.create({

@@ -69,6 +69,39 @@ The authentication system is now fully functional with working Register and Logi
   - **Frontend**: Netlify (existing deployment, needs environment variable update)
   - **Environment Variables**: Properly configured for production vs development
 
+### Deployment Implementation Progress (2025-06-16)
+- **✅ COMPLETED**:
+  1. **MongoDB Atlas Setup**: Successfully connected to cloud database (`mongodb+srv://jozovek:...@cluster0.vqrd1wu.mongodb.net/`)
+  2. **Backend Deployment**: Successfully deployed to Render at `https://to-do-app-z0jx.onrender.com`
+  3. **Frontend Deployment**: Successfully deployed to Netlify at `https://jillstodosite.netlify.app`
+  4. **Environment Variables**: Added `VITE_API_URL=https://to-do-app-z0jx.onrender.com/api` to Netlify
+  5. **CORS Configuration**: Updated `FRONTEND_URL=https://jillstodosite.netlify.app` in Render backend
+
+- **🔄 CURRENT ISSUE**: 
+  - **Problem**: Frontend still shows "Network error" when trying to register/login
+  - **Symptoms**: Network tab shows 404 error for `/api/auth/register` requests
+  - **Status**: Both backend and frontend are deployed and live, but not communicating properly
+  
+- **🔍 TROUBLESHOOTING PROGRESS (2025-06-17)**:
+  1. **✅ IDENTIFIED ROOT CAUSE**: Backend deployment on Render returning 404 "Not Found" errors
+  2. **✅ FIXED render.yaml**: Updated configuration with `rootDir: backend` and corrected build/start commands
+  3. **✅ FIXED MONGODB_URI**: Discovered malformed connection string in Render environment variables
+     - **Problem**: Missing `mongodb+srv://` protocol, username, password, and database name
+     - **Solution**: Reset MongoDB Atlas password and updated both local `.env` and Render environment variables
+  4. **✅ DEPLOYMENTS COMPLETING**: Render shows successful deployments with green checkmarks
+  5. **❌ STILL FAILING**: Backend still returns 404 despite successful deployments
+
+- **🔄 CURRENT STATUS**: 
+  - **Render Events**: Show successful deployments
+  - **Backend URL**: Still returns "Not Found" at `https://to-do-app-z0jx.onrender.com`
+  - **Next Step**: Need to check Render **Logs** (not Events) to see actual server startup messages and errors
+
+- **🎯 IMMEDIATE NEXT ACTION**: Check Render Logs for:
+  - Build logs (npm install success/failure)
+  - Runtime logs (server startup messages)
+  - MongoDB connection status
+  - Any error messages during startup
+
 ## Known Issues
 - ✅ **RESOLVED**: Server-side bcrypt password comparison issue - was caused by corrupted user data, now fixed
 - ✅ **RESOLVED**: Deployment architecture mismatch - frontend and backend deployment strategy now properly configured
