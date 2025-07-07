@@ -45,7 +45,8 @@ const register = async () => {
   successMessage.value = '';
   
   try {
-    const response = await fetch('/api/auth/register', {
+    const API_URL = import.meta.env.VITE_API_URL || '/api'  // Production: use environment variable or fallback to relative path
+    const response = await fetch(`${API_URL}/auth/register`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
