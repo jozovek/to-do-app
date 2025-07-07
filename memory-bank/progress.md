@@ -71,7 +71,7 @@ The authentication system is now fully functional with working Register and Logi
 
 ### Deployment Implementation Progress (2025-06-16)
 - **✅ COMPLETED**:
-  1. **MongoDB Atlas Setup**: Successfully connected to cloud database (`mongodb+srv://jozovek:...@cluster0.vqrd1wu.mongodb.net/`)
+  1. **MongoDB Atlas Setup**: Successfully connected to cloud database 
   2. **Backend Deployment**: Successfully deployed to Render at `https://to-do-app-z0jx.onrender.com`
   3. **Frontend Deployment**: Successfully deployed to Netlify at `https://jillstodosite.netlify.app`
   4. **Environment Variables**: Added `VITE_API_URL=https://to-do-app-z0jx.onrender.com/api` to Netlify
